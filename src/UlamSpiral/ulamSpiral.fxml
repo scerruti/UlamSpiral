@@ -1,0 +1,43 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import UlamSpiral.NumericTextField?>
+<BorderPane fx:controller="UlamSpiral.UlamSpiralController"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <MenuBar>
+            <Menu text="File" accelerator="F">
+                <MenuItem text="Exit" accelerator="E" onAction="#close"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <left>
+        <VBox spacing="5">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10"/>
+            </padding>
+            <NumericTextField fx:id="startIndex" promptText="Start" prefWidth="100"/>
+            <NumericTextField fx:id="gridWidth" promptText="Grid Width" prefWidth="100"/>
+            <HBox>
+                <Button text="Run" fx:id="runButton" onAction="#computePrimes"
+                        disable="${startIndex.text.empty  || gridWidth.text.empty }"/>
+                <Button text="Cancel" fx:id="cancelButton" onAction="#cancelPrimes"/>
+            </HBox>
+        </VBox>
+    </left>
+    <center>
+        <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">
+            <Canvas fx:id="spiral"/>
+        </ScrollPane>
+    </center>
+    <right></right>
+    <bottom>
+        <HBox fx:id="progressBox" visible="false" prefWidth="Infinity" alignment="CENTER">
+            <Label fx:id="progressMessage" prefWidth="100"/>
+            <ProgressBar fx:id="progress" prefWidth="500"/>
+        </HBox>
+    </bottom>
+</BorderPane>
