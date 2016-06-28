@@ -21,8 +21,10 @@ public class EratosthenesSieveTest {
     public void testGetPrimesTo2012() throws Exception {
         List<Long> listOfPrimes = EratosthenesSieve.getPrimes(2012);
         assertEquals(305, listOfPrimes.size());
-//        for (Long l : listOfPrimes) {
-//            System.out.format("%dL, ", l);
-//        }
+    }
+
+    @Test
+    public void testSieve20000() throws Exception {
+        EratosthenesSieve.sieve(20000, null);
     }
 }
